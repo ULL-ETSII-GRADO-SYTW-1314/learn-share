@@ -25,6 +25,9 @@ urlpatterns = patterns('',
     url(r'^curso/inscribe/(?P<course_id>\d+)/$','cursos.views.inscribe', name='info_curso'),
     url(r'^curso/add_lec/(?P<course_id>\d+)/$','cursos.views.curso_add_leccion', name='info_curso'),
     url(r'^curso/edit/(?P<course_id>\d+)/$','cursos.views.curso_edit', name='info_curso'),
+    url(r'^curso/view/(?P<course_id>\d+)/$', 'users.views.view_courses_lessons', name='info_curso'),
+    #urls tareas
+   url(r'^curso/view/(?P<course_id>\d+)/(?P<lesson_id>\d+)/$','cursos.views.new_task', name='info_curso'),
     
     
     url(r'^registro/', 'users.views.register', name='registro'),

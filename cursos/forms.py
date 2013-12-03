@@ -10,4 +10,6 @@ class CourseForm(forms.Form):
 class LeccionForm(forms.Form):
 	title = forms.RegexField(regex=r'^[\w.@+-]+$',max_length=155)
 	description = forms.CharField(widget=forms.Textarea)
-	
+class TaskForm(forms.Form):
+	body = forms.CharField(widget=forms.Textarea)
+		
