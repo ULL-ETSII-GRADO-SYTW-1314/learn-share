@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+	{% for curso in cursos %}
+		<div>
+			<p>titulo {{ curso.title}}</p>
+			<p>lenguaje {{ curso.lenguaje}}</p>
+			<a href="/curso/inscribe/{{ curso.id }}/"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Inscripcion"/></a>
+			<a href="/curso/{{ curso.id }}/"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Seguir"/></a>	
+		</div>
+		
+	
+	{% endfor %}
+{% endblock %}

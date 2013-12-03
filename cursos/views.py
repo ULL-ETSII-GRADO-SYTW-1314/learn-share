@@ -30,7 +30,8 @@ def curso_add(request):
 				description = form.cleaned_data['description']
 				precio = form.cleaned_data['prize']
 				leng= form.cleaned_data['lenguaje']
-				course=Curso.objects.create(titulo = title,	descripcion = description,lenguaje=leng,creator = request.user,creado = datetime.datetime.now())           
+				course=Curso.objects.create(titulo = title,	descripcion = description,lenguaje=leng,creator = request.user,
+				creado = datetime.datetime.now())           
 				course.save()
 				return redirect('/home')
 			else:
@@ -41,6 +42,12 @@ def curso_add(request):
 			form =  CourseForm()
 		return render_to_response('curso_new.html', {'title':'Registro', 'formulario': form,'state':state}, context_instance=RequestContext(request))
 
-	
-	
-	
+def curso_list(request):
+	cursos_ = Curso.objects.all()
+	return render_to_response('curso_list.html', {'title':'Curso', 'cursos':cursos_}, context_instance=RequestContext(request) )
+		
+def inscribe(request, course_id):
+	course = Curso.objects.get(id=course_id)		
+	inscripcion=Realiza.objects.create(usuario=request.user,curso=course, comenzado=datetime.datetime.now(), finalizado=datetime.datetime.now(), nota=0)
+	inscripcion.save()
+	return 	redirect('/home')
