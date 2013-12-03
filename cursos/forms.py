@@ -7,4 +7,7 @@ class CourseForm(forms.Form):
 	lenguaje = forms.CharField(max_length=155)
 	prize = forms.IntegerField(min_value=0, max_value=9999)
 	
+class LeccionForm(forms.Form):
+	title = forms.RegexField(regex=r'^[\w.@+-]+$',max_length=155)
+	description = forms.CharField(widget=forms.Textarea)
 	

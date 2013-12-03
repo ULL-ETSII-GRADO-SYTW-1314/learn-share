@@ -12,14 +12,15 @@ class Curso(models.Model):
   creator = models.ForeignKey(User)
 
 class Leccion(models.Model):
-  tipo = models.TextField(max_length = 155)
+  titulo = models.CharField(max_length = 75)
   descripcion = models.TextField(max_length = 155)
-  lenguaje = models.TextField(max_length = 155)
   curso = models.ForeignKey(Curso) 
+  
 class Tarea(models.Model):
   body = models.TextField(max_length=155)
   leccion = models.ForeignKey(Leccion)
   usuario = models.ForeignKey(User)
+  
 class Correcion(models.Model):
   body = models.TextField(max_length=155)
   tarea = models.ForeignKey(Tarea)

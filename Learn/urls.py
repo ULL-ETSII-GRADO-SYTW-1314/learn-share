@@ -23,14 +23,15 @@ urlpatterns = patterns('',
     url(r'^curso/new/$','cursos.views.curso_add', name='info_curso'),
     url(r'^curso/list/$','cursos.views.curso_list', name='info_curso'),
     url(r'^curso/inscribe/(?P<course_id>\d+)/$','cursos.views.inscribe', name='info_curso'),
+    url(r'^curso/add_lec/(?P<course_id>\d+)/$','cursos.views.curso_add_leccion', name='info_curso'),
+    url(r'^curso/edit/(?P<course_id>\d+)/$','cursos.views.curso_edit', name='info_curso'),
     
     
     url(r'^registro/', 'users.views.register', name='registro'),
-<<<<<<< .merge_file_hjikKg
+
 
     url(r'^seguir/(?P<user_id>\d+)/$', 'users.views.follow'),
     url(r'^unfollow/(?P<user_id>\d+)/$', 'users.views.unfollow'),
-=======
     url(r'^ayuda/', 'Learn.views.ayuda', name='ayuda'),
->>>>>>> .merge_file_2124Kb
+
 )

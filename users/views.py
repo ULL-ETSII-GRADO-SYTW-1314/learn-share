@@ -97,10 +97,12 @@ def home(request):
 		   if (u!=request.user):
 			   followers.append(ExtendUser.objects.get(user=u))
 	   ##Bloque de cursos usuario
-	   
-		   
+	   Curso_=Realiza.objects.filter(usuario = request.user)
+	   cursos=[]
+	   for c in (Curso_):
+		   cursos.append(Curso.objects.get(id=c.curso.id))
+	   return render_to_response('home.html', {'title':'Home', 'Extendido':User_,'User': request.user,'Users': Users,'seguidores': followers, 'cursos': cursos}, context_instance=RequestContext(request) )
 
-	   return render_to_response('home.html', {'title':'Home', 'Extendido':User_,'User': request.user,'Users': Users,'seguidores': followers}, context_instance=RequestContext(request) )
 
 
 def logout_user(request):
