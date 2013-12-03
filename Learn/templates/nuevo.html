@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" align="center">
+<div class="col-lg-12" align="center">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-6 well well-sm">
+            <legend><a href="http://www.jquery2dotnet.com"><i class="glyphicon glyphicon-globe"></i></a> Sign up!</legend>
+            <form action="#" method="post" class="form-horizontal" role="form">{% csrf_token %}
+            {{ formulario.username }}
+            {{ formulario.email }}
+            {{ formulario.password1}}
+            {{ formulario.password2}}
+
+            
+           
+            <br />
+            <button class="btn btn-lg btn-primary btn-block" type="submit">
+                Sign up</button>
+            </form>
+        </div>
+                <div class="col-xs-6 col-sm-4 col-md-5 well well-sm">
+					<div class="panel-body">
+                    <div class="the-price">
+                        <h1>Learn&share</h1>
+                        <small>Registrese hoy y obtenga acceso a</small>
+                    </div>
+           <table class="table">
+                        <tr>
+                            <td>
+                               100 cursos
+                            </td>
+                        </tr>
+                        <tr class="active">
+                            <td>
+                                Foros de consultas
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Más de 100.000 usuarios
+                            </td>
+                        </tr>
+                        <tr class="active">
+                            <td>
+                                100MB Storage
+                            </td>
+                        </tr>
+                        
+                        <tr class="active">
+                            <td>
+                                Obten puntos L&S ayudando a otros usuarios
+                            </td>
+                        </tr>
+                    </table>
+				</div>
+        </div>
+        
+    </div>
+</div>
+</div>
+{% endblock %}
+
