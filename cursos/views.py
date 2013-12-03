@@ -44,7 +44,7 @@ def curso_add(request):
 
 def curso_list(request):
 	cursos_ = Curso.objects.all()
-	return render_to_response('curso_list.html', {'title':'Curso', 'cursos':cursos_}, context_instance=RequestContext(request) )
+	return render_to_response('curso_list.html', {'title':'Cursos', 'cursos':cursos_}, context_instance=RequestContext(request) )
 		
 def inscribe(request, course_id):
 	course = Curso.objects.get(id=course_id)		

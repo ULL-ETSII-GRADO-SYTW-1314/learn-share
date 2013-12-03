@@ -1,14 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
-
-	{% for curso in cursos %}
-		<div>
-			<p>titulo {{ curso.title}}</p>
-			<p>lenguaje {{ curso.lenguaje}}</p>
-			<a href="/curso/inscribe/{{ curso.id }}/"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Inscripcion"/></a>
-			<a href="/curso/{{ curso.id }}/"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Seguir"/></a>	
-		</div>
-		
-	
-	{% endfor %}
+<div class="jumbotron">
+	<div class="row">
+		{% for curso in cursos %}
+			<div class="col-lg-4">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<p>Titulo: {{ curso.titulo}}</p>
+						<p>Lenguaje: {{ curso.lenguaje}}</p>
+						<a href="/curso/inscribe/{{ curso.id }}/"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Inscripcion"/></a>
+						<a href="/curso/{{ curso.id }}/"><input class="btn btn-mini btn-primary btn-info" type="button" name="buttonseguir" value="+Info"/></a>
+					</div>
+				</div>
+			</div>
+				
+		{% endfor %}
+	</div>
+</div>
 {% endblock %}
