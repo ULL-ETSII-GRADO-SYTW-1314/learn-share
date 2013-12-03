@@ -1,9 +1,48 @@
 {% extends "base.html" %}
-{% block content %}  
-	
-	<h1>{{curso.descripcion}}</h1>
-	<h1>{{curso.lenguaje}}</h1>
-	<h1>{{curso.creado}}</h1>
-	<h1>{{curso.creator}}</h1>
+{% block content %}
+
+<h1>{{curso.titulo}}</h1><br/>
+   <div class="col-xs-6 col-sm-4 col-md-12 well well-sm">
+      <div class="panel-body">
+         <table class="table">
+            <tr class="active">
+               <td>
+                  Descripción
+               </td>
+               <td>
+                  {{curso.descripcion}}
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  Lenguaje
+               </td>
+               <td>
+                  {{curso.lenguaje}}
+               </td>
+            </tr>
+            <tr class="active">
+               <td>
+                  Fecha de creación
+               </td>
+               <td>
+                  {{curso.creado}}
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  Creador
+               </td>
+               <td>
+                  {{curso.creator}}
+               </td>
+            </tr>
+         </table>
+      </div>
+   </div>
+   <a href="/curso/inscribe/{{ curso.id }}/"><input class="btn btn-lg btn-sucess btn-success" type="button" name="buttonseguir" value="Inscripcion"/></a>
+   <a href="/curso/list/"><input class="btn btn-lg btn-info btn-success" type="button" name="buttonseguir" value="Atras"/></a>
+
+
 
 {% endblock %}
