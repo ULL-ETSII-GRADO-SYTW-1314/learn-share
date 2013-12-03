@@ -20,6 +20,10 @@ urlpatterns = patterns('',
     url(r'^logout/$', 'users.views.logout_user', name='Logout'),
     #urls de cursos
     url(r'^curso/(?P<course_id>\d+)/$', 'cursos.views.curso_info', name='info_curso'),
-    url(r'^new/$','cursos.views.curso_add', name='info_curso'),
+    url(r'^curso/new/$','cursos.views.curso_add', name='info_curso'),
+    url(r'^curso/list/$','cursos.views.curso_list', name='info_curso'),
+    url(r'^curso/inscribe/(?P<course_id>\d+)/$','cursos.views.inscribe', name='info_curso'),
+    
+    
     url(r'^registro/', 'users.views.register', name='registro'),
 )

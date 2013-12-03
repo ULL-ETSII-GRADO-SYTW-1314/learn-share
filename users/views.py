@@ -4,7 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from users.models import ExtendUser
-
+from cursos.models import *
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext, loader
@@ -87,6 +87,7 @@ def home(request):
 	   User_ = ExtendUser.objects.all()
 	   Users=[]
 	   usuario=ExtendUser.objects.get(user = request.user)
+	   ##Bloque de followers
 	   User__=usuario.followers.all()
 	   for u in (User_):
 		   if (u!=usuario):
@@ -95,6 +96,7 @@ def home(request):
 	   for u in (User__):
 		   if (u!=request.user):
 			   followers.append(ExtendUser.objects.get(user=u))
+	   ##Bloque de cursos usuario
 	   
 		   
 
