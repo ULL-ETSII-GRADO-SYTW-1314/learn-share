@@ -14,10 +14,10 @@ class RegistrationForm(forms.Form):
 #	encargan de la validacion de los datos
  #   del formulario de registro."""
     required_css_class = 'required'
-    username = forms.RegexField(regex=r'^[\w.@+-]+$', max_length=30, label=_("Username"),  widget=forms.TextInput(attrs={'placeholder': 'username', 'class':"form-control"}), error_messages={'invalid': _("Use solo letras.")})
-    email = forms.CharField(label=_("E-mail"),  widget=forms.EmailInput(attrs={'placeholder': 'Insert your email', 'class':"form-control"}))
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'password', 'class':"form-control"}), label=_("Password"))
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'password', 'class':"form-control"}), label=_("Password (again)"))
+    username = forms.RegexField(regex=r'^[\w.@+-]+$', max_length=30, label=_("Username"),  widget=forms.TextInput(attrs={'placeholder': 'Usuario', 'class':"form-control"}), error_messages={'invalid': _("Use solo letras.")})
+    email = forms.CharField(label=_("E-mail"),  widget=forms.EmailInput(attrs={'placeholder': 'E-mail', 'class':"form-control"}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Contraseña', 'class':"form-control"}), label=_("Password"))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Repetir Contraseña', 'class':"form-control"}), label=_("Password (again)"))
     def clean_username(self):
         # Valida el nombre de usuario """
         existing = User.objects.filter(username__iexact=self.cleaned_data['username'])

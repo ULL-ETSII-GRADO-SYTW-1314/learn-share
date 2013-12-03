@@ -1,34 +1,51 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container" align="center">
-<div class="col-lg-12" align="center">
-    <div class="row">
-        <div class="col-xs-12 col-sm-8 col-md-6 well well-sm">
-            <legend><a href="http://www.jquery2dotnet.com"><i class="glyphicon glyphicon-globe"></i></a> Sign up!</legend>
-            <form action="#" method="post" class="form-horizontal" role="form">{% csrf_token %}
-            {{ formulario.title}}
-            {{ formulario.lenguaje}}
-            {{ formulario.description }}
-            {{ formulario.prize }}
-
-            
-           
-            <br />
-            <button class="btn btn-lg btn-primary btn-block" type="submit">
-                easy</button>
-            </form>
-        </div>
-                <div class="col-xs-6 col-sm-4 col-md-5 well well-sm">
-					<div class="panel-body">
-                    <div class="the-price">
-                        <h1>Learn&share</h1>
-                        <small>Registrese hoy y obtenga acceso a</small>
-                    </div>
-           
-				</div>
-        </div>
+    <div class="col-lg-12" align="center">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-6 well well-sm">            
+                <form action="#" method="post" role="form" class="bs-example form-horizontal">{% csrf_token %}
+                    <fieldset>
+                        <legend><a href="http://www.jquery2dotnet.com"><i class="glyphicon glyphicon-book"></i></a> Crea un nuevo curso</legend>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    {{ formulario.title}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    {{ formulario.lenguaje}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    {{ formulario.description }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    {{ formulario.prize }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <button class="btn btn-default btn-info" type="submit">Crear Curso</button>
+                                </div>
+                            </div>
+                    </fieldset>
+                </form>
+            </div>
         
+            <div class="col-xs-6 col-sm-4 col-md-5 well well-sm">
+                <div class="panel-body">
+                    <div class="the-price">
+                        <h1>Learn & Share</h1>
+                        <small>Crea cursos para que los demás aprendan de ti.</small>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 </div>
 {% endblock %}

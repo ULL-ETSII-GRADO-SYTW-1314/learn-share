@@ -15,7 +15,7 @@ import datetime
 
 def curso_info(request, course_id):
 	course = Curso.objects.get(id=course_id)
-	return render_to_response('curso_info.html', {'title':'Curso', 'curso':course}, context_instance=RequestContext(request) )
+	return render_to_response('curso_info.html', {'title':'Cursos', 'curso':course}, context_instance=RequestContext(request) )
 	
 def curso_add(request):
 	state = " Se dispone a realizar un nuevo registro.Recuerde que todos los campos son obligatorios"
@@ -37,14 +37,14 @@ def curso_add(request):
 			else:
 					
 				  state=" Error en el registro"
-				  return render_to_response('curso_new.html', {'title':'Registro', 'formulario': form,'state':state}, context_instance=RequestContext(request))
+				  return render_to_response('curso_new.html', {'title':'Cursos', 'formulario': form,'state':state}, context_instance=RequestContext(request))
 		else:
 			form =  CourseForm()
-		return render_to_response('curso_new.html', {'title':'Registro', 'formulario': form,'state':state}, context_instance=RequestContext(request))
+		return render_to_response('curso_new.html', {'title':'Cursos', 'formulario': form,'state':state}, context_instance=RequestContext(request))
 
 def curso_list(request):
 	cursos_ = Curso.objects.all()
-	return render_to_response('curso_list.html', {'title':'Curso', 'cursos':cursos_}, context_instance=RequestContext(request) )
+	return render_to_response('curso_list.html', {'title':'Cursos', 'cursos':cursos_}, context_instance=RequestContext(request) )
 		
 def inscribe(request, course_id):
 	course = Curso.objects.get(id=course_id)		
