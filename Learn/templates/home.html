@@ -1,91 +1,103 @@
 {% extends "base.html" %}
 {% block content %}    
-                                         <div class="jumbotron">
-                                                <div class="row">
-                                                        
-                                                            <div class="col-lg-8">
-			<div class="panel panel-default">
-                                                                 <div class="panel-body">
-                                                                        Basic panel
-                                                                 </div>
-                                                                </div>
-                                                                <div class="panel panel-default">
-                                                                 <div class="panel-body">
-                                                                        Basic panel
-                                                                 </div>
-                                                                </div>
-                                                                <div class="panel panel-default">
-                                                                 <div class="panel-body">
-                                                                        Basic panel
-                                                                 </div>
-                                                                </div>
-                                                                <div class="panel panel-default">
-                                                                 <div class="panel-body">
-                                                                        Basic panel
-                                                                 </div>
-                                                                </div>
-                                                                <div class="panel panel-default">
-                                                                 <div class="panel-body">
-                                                                        Basic panel
-                                                                 </div>
-                                                                </div>
-                                                                <div class="panel panel-default">
-                                                                 <div class="panel-body">
-                                                                        Basic panel
-                                                                 </div>
-                                                                </div>
-                                                                <div class="panel panel-default">
-                                                                 <div class="panel-body">
-                                                                        Basic panel
-                                                                 </div>
-                                                                </div>
+<div class="jumbotron">
+    <div class="row">
 
-    
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                                <div class="panel panel-primary">
-                                                                 <div class="panel-heading">
-                                                                        <h3 class="panel-title">Usuario</h3>
-                                                                 </div>
-                                                                 <div class="panel-body">
-                                                                        <div class="container-fluid well span6">
-                                                                                <div class="row-fluid">
-                                                                                        <div class="span2" >
-                                                                                                <img src="https://secure.gravatar.com/avatar/de9b11d0f9c0569ba917393ed5e5b3ab?s=140&r=g&d=mm" class="img-circle">
-                                                                                        </div>
-                                                                                        
-                                                                                        <div class="span8">
-                                                                                                <h3>User Name</h3>
-                                                                                                <h6>Email: MyEmail@servidor.com</h6>
-                                                                                                <h6>Ubication: Colombia</h6>
-                                                                                                <h6>Old: 1 Year</h6>
-                                                                                        </div>
-                                                                                        
-                                                                                        <div class="span2">
-                                                                                                <div class="btn-group">
-                                                                                                        <button type="button" class="btn btn-labeled btn-warning"><span class="btn-label"></span>Editar Perfil</button>
-                                                                                                </div>
-                                                                                        </div>
-                                                                                </div>
-                                                                        </div>
-                                                                        Panel content
-                                                                 </div>
-                                                                </div>
-                                                                <div class="panel panel-primary">
-                                                                 <div class="panel-heading">
-                                                                        <h3 class="panel-title">Amigos</h3>
-                                                                 </div>
-                                                                 <div class="panel-body">
-                                                                        Panel content
-                                                                 </div>
-                                                                </div>
-                                                                
-                                                 </div>
-                                                </div>
-                                         </div>
-                                        </div>
-                         
-                {% endblock %}
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    Basic panel
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    Basic panel
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    Basic panel
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    Basic panel
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    Basic panel
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    Basic panel
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    Basic panel
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Usuario</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="container-fluid well span6">
+                        <div class="row-fluid">
+                            <div class="span2" >
+                                <img src="https://secure.gravatar.com/avatar/de9b11d0f9c0569ba917393ed5e5b3ab?s=140&r=g&d=mm" class="img-circle">
+                            </div>
+
+                            <div class="span8">
+                                <h3>User Name</h3>
+                                <h6>Email: MyEmail@servidor.com</h6>
+                                <h6>Ubication: Colombia</h6>
+                                <h6>Old: 1 Year</h6>
+                            </div>
+
+                            <div class="span2">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-labeled btn-info"><span class="btn-label"></span>Editar Perfil</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Sugerencias</h3>
+                </div>
+                <div class="panel-body">
+                {% for usu in Users %}
+                    <p>{{usu.alias}}
+                    <a href="/seguir/{{ usu.user.id }}/"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Seguir"/></a>
+                    <!--<a href="/seguir/{{ usu.user.id }}/">seguir </a>-->
+                    </p>
+                {% endfor%}
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Amigos</h3>
+                </div>
+                <div class="panel-body">
+                {% for user in seguidores %}
+                    <p><a href="/perfil/{{ user.user.id }}/">{{user.alias}}</a>
+                    <a href="/unfollow/{{ user.user.id }}/"><input class="btn btn-mini btn-primary btn-danger" type="button" name="buttonseguir" value="Dejar"/></a>
+                    <!--<a href="/unfollow/{{ user.user.id }}/">dejar </a>-->
+                    </p>
+                {% endfor%}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
 
 
                         
