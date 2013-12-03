@@ -5,9 +5,9 @@ from django.contrib import admin
 
 
 class Curso(models.Model):
-  tipo = models.TextField(max_length = 155)
+  titulo = models.CharField(max_length = 155)
   descripcion = models.TextField(max_length = 155)
-  lenguaje = models.TextField(max_length = 155)
+  lenguaje = models.CharField(max_length = 75)
   creado = models.DateTimeField(auto_now_add=True)
   creator = models.ForeignKey(User)
 
@@ -37,7 +37,7 @@ class Realiza(models.Model):
 ##Admin
 
 class CursoAdmin(admin.ModelAdmin):
-  list_display = ["tipo", "creado", "creator"]
+  list_display = ["lenguaje", "creado", "creator"]
   list_filter = ["creator"]
 
 
