@@ -77,7 +77,30 @@ def login_user(request):
 				state = "Your account is not active, please contact the site admin."
 
     return render_to_response('login.html',{'title':'Login', 'state':state, 'username': username}, context_instance=RequestContext(request))
+def home(request):
+   if not request.user.is_authenticated():
+        return redirect('/login/?next=%s' % request.path)
+   else:
+	   
+	
+	   User_ = ExtendUser.objects.all()
+	   Users=[]
+	   usuario=ExtendUser.objects.get(user = request.user)
+	   User__=usuario.followers.all()
+	   for u in (User_):
+		   if (u!=usuario):
+			   Users.append(u)
+	   followers=[] 
+	   for u in (User__):
+		   if (u!=request.user):
+			   followers.append(ExtendUser.objects.get(user=u))
+	   
+		   
 
-def logout_view(request):
+	   return render_to_response('home.html', {'title':'Home', 'Extendido':User_,'User': request.user,'Users': Users,'seguidores': followers}, context_instance=RequestContext(request) )
+
+
+
+def logout_user(request):
 	logout(request)
 	return redirect('/home')
