@@ -29,7 +29,6 @@
 	    </br>
 	    <h4 class="text-center login-title">¿Eres nuevo en Learn&Share?
 	    </br>
-	    </br>
             <a href="/registro" class="btn btn-lg btn-primary btn-block" type="submit">¡Regístrate! </a>
         </div>
     </div>
