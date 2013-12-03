@@ -61,7 +61,7 @@
 
                             <div class="span2">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-labeled btn-info"><span class="btn-label"></span>Editar Perfil</button>
+                                    <button type="button" class="btn btn-primary btn-sm btn-info"><span class="btn-label"></span>Editar Perfil</button>
                                 </div>
                             </div>
                         </div>
@@ -74,10 +74,9 @@
                 </div>
                 <div class="panel-body">
                 {% for usu in Users %}
-                    <p>{{usu.alias}}
-                    <a href="/seguir/{{ usu.user.id }}/"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Seguir"/></a>
-                    <!--<a href="/seguir/{{ usu.user.id }}/">seguir </a>-->
-                    </p>
+                    <h4>{{usu.alias}}
+                    <a href="/seguir/{{ usu.user.id }}/"><input class="btn btn-primary btn-xs btn-success" type="button" name="buttonseguir" value="Seguir"/></a>
+                    </h4>
                 {% endfor%}
                 </div>
             </div>
@@ -87,10 +86,9 @@
                 </div>
                 <div class="panel-body">
                 {% for user in seguidores %}
-                    <p><a href="/perfil/{{ user.user.id }}/">{{user.alias}}</a>
-                    <a href="/unfollow/{{ user.user.id }}/"><input class="btn btn-mini btn-primary btn-danger" type="button" name="buttonseguir" value="Dejar"/></a>
-                    <!--<a href="/unfollow/{{ user.user.id }}/">dejar </a>-->
-                    </p>
+                    <h4><a href="#">{{user.alias}}</a>
+                    <a href="/unfollow/{{ user.user.id }}/"><input class="btn btn-primary btn-xs btn-danger" type="button" name="buttonseguir" value="Dejar"/></a>
+                    </h4>
                 {% endfor%}
                 </div>
             </div>
