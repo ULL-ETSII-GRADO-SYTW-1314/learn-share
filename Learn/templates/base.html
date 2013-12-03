@@ -48,7 +48,7 @@
               <div class="navbar-collapse collapse navbar-responsive-collapse">
                 <ul class="nav navbar-nav">
                   {% if user.is_authenticated %}
-                  <li {% if title == "Registro" %} class="active" {% endif%}><a href="#">Mis Cursos</a></li>
+                  <li {% if title == "Home" %} class="active" {% endif%}><a href="#">Mis Cursos</a></li>
                   <li {% if title == "Registro" %} class="active" {% endif%}><a href="#">Mis Lecciones</a></li>
     						  <li {% if title == "Registro" %} class="active" {% endif%}><a href="#">Mis Correcciones</a></li>
                   <li {% if title == "Registro" %} class="active" {% endif%}><a href="#">Ayuda a otros</a></li>
@@ -63,9 +63,8 @@
                   <li {% if title == "Login" %} class="active" {% endif%}> <a href="/login"><i class="icon-ok-circle"></i> Sign in</a></li>
                   {% endif%}
 
-
                   {% if user.is_authenticated %}
-                  <li><a href="/logout">Logout</a></li>
+                  <li><a href="/logout">Salir</a></li>
                   {% endif%}
                 </ul>
               </div><!-- /.nav-collapse -->

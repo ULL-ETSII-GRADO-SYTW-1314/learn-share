@@ -20,4 +20,6 @@ urlpatterns = patterns('',
     url(r'^logout/$', 'users.views.logout_user', name='Logout'),
     
     url(r'^registro/', 'users.views.register', name='registro'),
+
+    url(r'^seguir/(?P<user_id>\d+)/$', 'users.views.follow'),
 )

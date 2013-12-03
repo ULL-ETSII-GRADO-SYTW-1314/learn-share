@@ -104,3 +104,12 @@ def home(request):
 def logout_user(request):
 	logout(request)
 	return redirect('/home')
+
+def follow(request, user_id):
+        if not request.user.is_authenticated():
+                return redirect('/login/?next=%s' % request.path)
+        else:
+                
+                usuario=ExtendUser.objects.get(user = request.user)
+                usuario.followers.add(User.objects.get(id = user_id))
+                return redirect('/home/')
