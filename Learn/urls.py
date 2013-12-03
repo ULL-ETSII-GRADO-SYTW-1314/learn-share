@@ -26,11 +26,8 @@ urlpatterns = patterns('',
     
     
     url(r'^registro/', 'users.views.register', name='registro'),
-<<<<<<< .merge_file_hjikKg
-
     url(r'^seguir/(?P<user_id>\d+)/$', 'users.views.follow'),
     url(r'^unfollow/(?P<user_id>\d+)/$', 'users.views.unfollow'),
-=======
     url(r'^ayuda/', 'Learn.views.ayuda', name='ayuda'),
->>>>>>> .merge_file_2124Kb
+
 )
