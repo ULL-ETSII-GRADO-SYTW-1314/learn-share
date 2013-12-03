@@ -78,6 +78,7 @@ def login_user(request):
 				state = "Your account is not active, please contact the site admin."
 
     return render_to_response('login.html',{'title':'Login', 'state':state, 'username': username}, context_instance=RequestContext(request))
+
 def home(request):
    if not request.user.is_authenticated():
         return redirect('/login/?next=%s' % request.path)
@@ -97,10 +98,18 @@ def home(request):
 		   if (u!=request.user):
 			   followers.append(ExtendUser.objects.get(user=u))
 	   ##Bloque de cursos usuario
-	   
-		   
+	   Curso_=Realiza.objects.filter(usuario = request.user)
+	   cursos=[]
+	   for c in (Curso_):
+		   cursos.append(Curso.objects.get(id=c.curso.id))
+	   return render_to_response('home.html', {'title':'Home', 'Extendido':User_,'User': request.user,'Users': Users,'seguidores': followers, 'cursos': cursos}, context_instance=RequestContext(request) )
 
-	   return render_to_response('home.html', {'title':'Home', 'Extendido':User_,'User': request.user,'Users': Users,'seguidores': followers}, context_instance=RequestContext(request) )
+def view_courses_lessons(request,course_id):
+	course = Curso.objects.get(id=course_id)
+	lecciones=Leccion.objects.filter(curso = course)
+	return render_to_response('list_lessons.html', {'title':'Curso', 'Curso':course,'lecciones': lecciones, 'User': request.user}, context_instance=RequestContext(request) )
+
+
 
 
 def logout_user(request):

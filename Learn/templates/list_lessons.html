@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+	<h3>{{Curso.titulo}}</h3>
+	{% for leccion in lecciones %}
+		<div>
+			<p> {{ leccion.titulo}}<a href="./{{leccion.id}}"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Realizar"/></a>
+			<a href=""><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Correcciones"/></a></p>
+				
+		</div>
+	{% endfor %}
+		
+		
+	
+{% endblock %}

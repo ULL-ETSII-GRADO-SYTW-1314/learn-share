@@ -18,7 +18,7 @@ def curso_info(request, course_id):
 	return render_to_response('curso_info.html', {'title':'Cursos', 'curso':course}, context_instance=RequestContext(request) )
 	
 def curso_add(request):
-	state = " Se dispone a realizar un nuevo registro.Recuerde que todos los campos son obligatorios"
+	
 	if not request.user.is_authenticated():
 		return redirect('/login/?next=%s' % request.path)
 	else:	
@@ -33,7 +33,7 @@ def curso_add(request):
 				course=Curso.objects.create(titulo = title,	descripcion = description,lenguaje=leng,creator = request.user,
 				creado = datetime.datetime.now())           
 				course.save()
-				return redirect('/home')
+				return redirect('/curso/edit/'+str(course.id))
 			else:
 					
 				  state=" Error en el registro"
@@ -42,6 +42,38 @@ def curso_add(request):
 			form =  CourseForm()
 		return render_to_response('curso_new.html', {'title':'Cursos', 'formulario': form,'state':state}, context_instance=RequestContext(request))
 
+def curso_add_leccion(request, course_id):
+	state = " Se dispone a realizar un nuevo registro.Recuerde que todos los campos son obligatorios"
+	if not request.user.is_authenticated():
+		return redirect('/login/?next=%s' % request.path)
+	else:	
+		if request.method == 'POST':
+			form = LeccionForm(request.POST)
+			if form.is_valid():
+				course = Curso.objects.get(id=course_id)
+				title = form.cleaned_data['title']
+				
+				description = form.cleaned_data['description']
+				lec = Leccion.objects.create(titulo = title, descripcion = description, curso=course)           
+				lec.save()
+				return redirect('/home'+str(course.id))
+			else:
+					
+				  state=" Error en el registro"
+				  return render_to_response('curso_lecc.html', {'title':'Registro', 'formulario': form,'state':state}, context_instance=RequestContext(request))
+		else:
+			form =  LeccionForm()
+		return render_to_response('curso_lecc.html', {'title':'Registro', 'formulario': form,'state':state}, context_instance=RequestContext(request))
+
+
+def curso_edit(request, course_id):
+	#lista con las lecciones del curso
+	course = Curso.objects.get(id=course_id)
+	lecciones=Leccion.objects.filter(curso = course)
+	return render_to_response('curso_edit.html', {'title':'Curso', 'curso':course,'lecciones': lecciones}, context_instance=RequestContext(request) )
+	
+	
+	
 def curso_list(request):
 	cursos_ = Curso.objects.all()
 	return render_to_response('curso_list.html', {'title':'Cursos', 'cursos':cursos_}, context_instance=RequestContext(request) )
@@ -51,3 +83,24 @@ def inscribe(request, course_id):
 	inscripcion=Realiza.objects.create(usuario=request.user,curso=course, comenzado=datetime.datetime.now(), finalizado=datetime.datetime.now(), nota=0)
 	inscripcion.save()
 	return 	redirect('/home')
+
+##Vistas de tareas
+def new_task(request,course_id,lesson_id):
+	state = " Se dispone a realizar un nuevo registro.Recuerde que todos los campos son obligatorios"
+	lec = Leccion.objects.get(id=lesson_id)
+	if request.method == 'POST':
+		form = TaskForm(request.POST)
+		if form.is_valid():
+			lec = Leccion.objects.get(id=lesson_id)
+			body = form.cleaned_data['body']
+			task = Tarea.objects.create(body=body, usuario=request.user, leccion=lec)           
+			task.save()
+			return redirect('/curso/view/'+str(course_id))
+		else:
+				
+			  state=" Error en el registro"
+			  return render_to_response('new_task.html', {'title':'Registro', 'formulario': form,'state':state, 'leccion': lec}, context_instance=RequestContext(request))
+	else:
+		form =  TaskForm()
+	return render_to_response('new_task.html', {'title':'Registro', 'formulario': form,'state':state, 'leccion': lec}, context_instance=RequestContext(request))
+
