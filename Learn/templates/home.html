@@ -86,7 +86,12 @@
                     <h3 class="panel-title">Amigos</h3>
                 </div>
                 <div class="panel-body">
-                
+                {% for user in seguidores %}
+                    <p><a href="/perfil/{{ user.user.id }}/">{{user.alias}}</a>
+                    <a href="/unfollow/{{ user.user.id }}/"><input class="btn btn-mini btn-primary btn-danger" type="button" name="buttonseguir" value="Dejar"/></a>
+                    <!--<a href="/unfollow/{{ user.user.id }}/">dejar </a>-->
+                    </p>
+                {% endfor%}
                 </div>
             </div>
         </div>

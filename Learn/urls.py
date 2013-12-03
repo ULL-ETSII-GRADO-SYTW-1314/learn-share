@@ -22,4 +22,5 @@ urlpatterns = patterns('',
     url(r'^registro/', 'users.views.register', name='registro'),
 
     url(r'^seguir/(?P<user_id>\d+)/$', 'users.views.follow'),
+    url(r'^unfollow/(?P<user_id>\d+)/$', 'users.views.unfollow'),
 )
