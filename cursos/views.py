@@ -18,7 +18,7 @@ def curso_info(request, course_id):
 	return render_to_response('curso_info.html', {'title':'Cursos', 'curso':course}, context_instance=RequestContext(request) )
 	
 def curso_add(request):
-	
+	state=""
 	if not request.user.is_authenticated():
 		return redirect('/login/?next=%s' % request.path)
 	else:	

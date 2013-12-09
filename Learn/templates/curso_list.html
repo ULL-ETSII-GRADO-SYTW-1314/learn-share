@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
+<h2 class="text-info">Cursos</h2>
+<div align="right">
+		<a href="/curso/new/"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Nuevo curso"/></a><br/><br/>
+</div>
 <div class="jumbotron">
 	<div class="row">
 		{% for curso in cursos %}
@@ -17,4 +21,5 @@
 		{% endfor %}
 	</div>
 </div>
+
 {% endblock %}
