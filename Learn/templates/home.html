@@ -4,12 +4,13 @@
     <div class="row">
 
         <div class="col-lg-8">
+         <h2 class="text-info">Cursos que sigo</h2><br/>
+         <p>¡Anímate y aprende!</p></br>
 			{% for curso in cursos %}
             <div class="panel panel-default">
                 <div class="panel-body">
                     {{ curso.titulo }}
-					<a href="/curso/view/{{ curso.id }}/"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Continuar"/></a>	
-
+					     <a href="/curso/view/{{ curso.id }}/"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Continuar"/></a>	
                 </div>
             </div>
             	{% endfor %}
