@@ -1,14 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
+   <h2 class="text-info">{{curso.titulo}}</h2>
+   <div align="right">
+      <a href="/curso/add_lec/{{ curso.id }}/"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Nueva leccion"/></a><br/><br/>
+   </div>
 
-	{% for leccion in lecciones %}
-		<div>
-			<p>titulo {{ leccion.title}}</p>
-			<a href=""><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Editar"/></a>
-			<a href=""><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Borrar"/></a>	
-		</div>
-	{% endfor %}
-		<a href="/curso/add_lec/{{ curso.id }}/"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Nueva leccion"/></a>
-		
-	
+   {% for leccion in lecciones %}
+      <div class="col-lg-4">
+         <div class="panel panel-default">
+            <div class="panel-body">
+               <p>Lección{{leccion.title}}</p>
+               <a href=""><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Editar"/></a>
+               <a href=""><input class="btn btn-mini btn-danger btn-success" type="button" name="buttonseguir" value="Borrar"/></a>	
+            </div>
+         </div>
+      </div>
+   {% endfor %}		
 {% endblock %}
