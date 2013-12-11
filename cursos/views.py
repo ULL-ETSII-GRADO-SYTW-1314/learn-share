@@ -60,17 +60,17 @@ def curso_add_leccion(request, course_id):
 			else:
 					
 				  state=" Error en el registro"
-				  return render_to_response('curso_lecc.html', {'title':'Registro', 'formulario': form,'state':state}, context_instance=RequestContext(request))
+				  return render_to_response('curso_lecc.html', {'title':'Cursos', 'formulario': form,'state':state}, context_instance=RequestContext(request))
 		else:
 			form =  LeccionForm()
-		return render_to_response('curso_lecc.html', {'title':'Registro', 'formulario': form,'state':state}, context_instance=RequestContext(request))
+		return render_to_response('curso_lecc.html', {'title':'Cursos', 'formulario': form,'state':state}, context_instance=RequestContext(request))
 
 
 def curso_edit(request, course_id):
 	#lista con las lecciones del curso
 	course = Curso.objects.get(id=course_id)
 	lecciones=Leccion.objects.filter(curso = course)
-	return render_to_response('curso_edit.html', {'title':'Curso', 'curso':course,'lecciones': lecciones}, context_instance=RequestContext(request) )
+	return render_to_response('curso_edit.html', {'title':'Cursos', 'curso':course,'lecciones': lecciones}, context_instance=RequestContext(request) )
 	
 	
 	
@@ -99,8 +99,8 @@ def new_task(request,course_id,lesson_id):
 		else:
 				
 			  state=" Error en el registro"
-			  return render_to_response('new_task.html', {'title':'Registro', 'formulario': form,'state':state, 'leccion': lec}, context_instance=RequestContext(request))
+			  return render_to_response('new_task.html', {'title':'Lecciones', 'formulario': form,'state':state, 'leccion': lec}, context_instance=RequestContext(request))
 	else:
 		form =  TaskForm()
-	return render_to_response('new_task.html', {'title':'Registro', 'formulario': form,'state':state, 'leccion': lec}, context_instance=RequestContext(request))
+	return render_to_response('new_task.html', {'title':'Lecciones', 'formulario': form,'state':state, 'leccion': lec}, context_instance=RequestContext(request))
 
