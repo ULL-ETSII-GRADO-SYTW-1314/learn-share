@@ -2,18 +2,20 @@
 {% block content %}    
 <div class="jumbotron">
     <div class="row">
-
         <div class="col-lg-8">
-         <h2 class="text-info">Cursos que sigo</h2><br/>
-         <p>¡Anímate y aprende!</p></br>
-			{% for curso in cursos %}
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    {{ curso.titulo }}
-					     <a href="/curso/view/{{ curso.id }}/"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Continuar"/></a>	
+         <h2 class="text-info">Cursos que sigo</h2>
+         <p>¡Anímate y aprende!</p>
+        {% for curso in cursos %}
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <p>Titulo: {{curso.titulo}}</p>
+                        <p>Lenguaje: {{curso.lenguaje}}</p>
+                        <a href="/curso/view/{{ curso.id }}/"><input class="btn btn-primary btn-sm btn-success" type="button" name="buttoncontinuar" value="Continuar"/></a>
+                    </div>
                 </div>
             </div>
-            	{% endfor %}
+        {% endfor %}
            
         </div>
         <div class="col-lg-4">
@@ -29,10 +31,9 @@
                             </div>
 
                             <div class="span8">
-                                <h3>User Name</h3>
-                                <h6>Email: MyEmail@servidor.com</h6>
-                                <h6>Ubication: Colombia</h6>
-                                <h6>Old: 1 Year</h6>
+                                <h3>{{ User.username }}</h3>
+                                <h6>E-mail: {{ User.email }} </h6>
+                                <h6>Puntos L&S: {{ User.puntuacion }}</h6>
                             </div>
 
                             <div class="span2">

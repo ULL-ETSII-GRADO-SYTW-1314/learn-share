@@ -12,4 +12,7 @@ from django.contrib.auth import authenticate, login
 from django.core.validators import *
 
 def ayuda(request):
-   return render_to_response('ayuda.html', {'title':'ayuda', 'user': request.user},context_instance=RequestContext(request) )
+   return render_to_response('ayuda.html', {'title':'Ayuda', 'user': request.user},context_instance=RequestContext(request) )
+
+def contacto(request):
+   return render_to_response('contacto.html', {'title':'Contacto', 'user': request.user},context_instance=RequestContext(request) )
