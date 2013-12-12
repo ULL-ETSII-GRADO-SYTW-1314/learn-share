@@ -13,7 +13,7 @@
                         <div class="row-fluid">
                             <div class="span2" >
                                 {% load gravatar %}
-                                <img src="{% gravatar_url user.email 150%}" class="img-circle">
+                                <img src="{% gravatar_url user.email 150 %}" class="img-circle imagen_perfil">
                             </div>
 
                             <div class="span8">
@@ -31,14 +31,14 @@
                 </div>
                 <div class="panel-body">
                 {% for users in follower %}
-                    <h4><a href="/perfil/{{ users.user.id }}/">{{users.alias}}</a></h4>
+                    <a href="/perfil/{{ users.user.id }}/"><img src="{% gravatar_url users.user.email %}" class="img-circle imagen_sm"> {{users.alias}}</a>
+                    </br>
                 {% endfor%}
                 </div>
             </div>
         </div>
         <div class="col-lg-8">
-             <h2 class="text-info">Cursos que sigo</h2>
-             <p>¡Anímate y aprende!</p>
+            <h2 class="text-info">Cursos que sigue {{ user.username }} </h2>
             {% for curso in cursos %}
                 <div class="col-lg-6">
                     <div class="panel panel-default">
