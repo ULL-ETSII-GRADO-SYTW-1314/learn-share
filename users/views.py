@@ -132,3 +132,18 @@ def unfollow(request, user_id):
                 usuario=ExtendUser.objects.get(user = request.user)
                 usuario.followers.remove(User.objects.get(id = user_id))
                 return redirect('/home/')
+
+def perfil(request, user_id):
+        if not request.user.is_authenticated():
+            return redirect('/login/?next=%s' % request.path)
+        else:
+            usuario=User.objects.get(id=user_id)
+            usuario_=ExtendUser.objects.get(user=usuario)
+
+            User__=usuario_.followers.all()
+            followers=[]
+            for u in (User__):
+                    followers.append(ExtendUser.objects.get(user=u))
+
+                
+            return render_to_response('perfil.html', {'title':'Perfil', 'user': usuario, 'User': usuario_, 'follower':followers})
