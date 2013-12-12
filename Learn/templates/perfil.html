@@ -12,7 +12,8 @@
                     <div class="container-fluid well span6">
                         <div class="row-fluid">
                             <div class="span2" >
-                                <img src="{{User.photo}}" class="img-circle">
+                                {% load gravatar %}
+                                <img src="{% gravatar_url user.email 150%}" class="img-circle">
                             </div>
 
                             <div class="span8">
@@ -44,7 +45,20 @@
                         <div class="panel-body">
                             <p>Titulo: {{curso.titulo}}</p>
                             <p>Lenguaje: {{curso.lenguaje}}</p>
-                            <a href="/curso/view/{{ curso.id }}/"><input class="btn btn-primary btn-sm btn-success" type="button" name="buttoncontinuar" value="Continuar"/></a>
+                            <a href="/curso/{{ curso.id }}/"><input class="btn btn-primary btn-sm btn-info" type="button" name="buttonseguir" value="+Info"/></a>
+                            
+
+
+
+
+
+
+
+                            {% if curso in cursos_login %}
+                                <a href="/curso/view/{{ curso.id }}/"><input class="btn btn-primary btn-sm btn-success" type="button" name="buttoncontinuar" value="Continuar"/></a>
+                            {% else %}
+                                <a href="/curso/inscribe/{{ curso.id }}/"><input class="btn btn-primary btn-sm btn-success" type="button" name="buttonseguir" value="Inscripcion"/></a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

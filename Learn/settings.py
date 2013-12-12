@@ -127,6 +127,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'django_gravatar',
     'users',
     'cursos',
     # Uncomment the next line to enable the admin:
@@ -134,6 +135,9 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+GRAVATAR_SECURE = True
+
+GRAVATAR_DEFAULT_URL = "https://secure.gravatar.com/avatar/de9b11d0f9c0569ba917393ed5e5b3ab?s=140&r=g&d=mm"
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 

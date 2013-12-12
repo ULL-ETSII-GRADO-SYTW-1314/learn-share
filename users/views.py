@@ -145,5 +145,17 @@ def perfil(request, user_id):
             for u in (User__):
                     followers.append(ExtendUser.objects.get(user=u))
 
+            #Cursos del usuario que esta logueado
+            Curso_login=Realiza.objects.filter(usuario = request.user)
+            cursos_login=[]
+            for c_login in (Curso_login):
+                cursos_login.append(Curso.objects.get(id=c_login.curso.id))
+            
+            #Cursos del perfil que estamos usando.        
+            Curso_=Realiza.objects.filter(usuario = usuario)
+            cursos=[]
+            for c in (Curso_):
+                cursos.append(Curso.objects.get(id=c.curso.id))
+
                 
-            return render_to_response('perfil.html', {'title':'Perfil', 'user': usuario, 'User': usuario_, 'follower':followers})
+            return render_to_response('perfil.html', {'title':'Perfil', 'user': usuario, 'User': usuario_, 'follower':followers, 'cursos': cursos, 'cursos_login': cursos_login})
