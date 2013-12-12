@@ -52,9 +52,11 @@
                 </div>
                 <div class="panel-body">
                 {% for usu in Users %}
-                    <h4>{{usu.alias}}
-                    <a href="/seguir/{{ usu.user.id }}/"><input class="btn btn-primary btn-xs btn-success" type="button" name="buttonseguir" value="Seguir"/></a>
-                    </h4>
+                    {% if not usu in seguidores %}
+                        <h4>{{usu.alias}}
+                        <a href="/seguir/{{ usu.user.id }}/"><input class="btn btn-primary btn-xs btn-success" type="button" name="buttonseguir" value="Seguir"/></a>
+                        </h4>
+                    {% endif %}
                 {% endfor%}
                 </div>
             </div>
