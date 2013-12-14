@@ -73,9 +73,18 @@ def curso_edit(request, course_id):
 	course = Curso.objects.get(id=course_id)
 	lecciones=Leccion.objects.filter(curso = course)
 	return render_to_response('curso_edit.html', {'title':'Cursos', 'curso':course,'lecciones': lecciones}, context_instance=RequestContext(request) )
+
+def curso_remove(request, course_id):
+	if not request.user.is_authenticated():
+		return redirect('/login/?next=%s' % request.path)
+	else:
+		Curso.objects.filter(id = course_id).delete()
+		return redirect('/home/')	
+def my_courses(request):
+	cursos = Curso.objects.filter(creator=request.user)
+	return render_to_response('curso_list.html', {'title':'Cursos', 'cursos':cursos}, context_instance=RequestContext(request) )
 	
-	
-	
+		
 def curso_list(request):
 	#Cursos del usuario que esta logueado
 	cursos = Curso.objects.all()
@@ -157,3 +166,5 @@ def task_reviews(request,task_id):
     task = Tarea.objects.filter(id=task_id)
     reviews = Correcion.objects.filter(tarea=task)
     return render_to_response('review_visor.html', {'title':'Mis tareas','tareas': task, 'revisiones': reviews}, context_instance=RequestContext(request))
+
+
