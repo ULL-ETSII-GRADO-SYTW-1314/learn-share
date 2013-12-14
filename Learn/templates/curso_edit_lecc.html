@@ -5,15 +5,15 @@
    <div class="row">
       <form action="#" method="post" class="form-horizontal" role="form">{% csrf_token %}
          <div align="left">
-            Título
-            {{leccion.title }}
-            <br/><br>Descripción
-            {{leccion.description }}
-            <br/>
-         </div>
+         	<label>titulo </label>
+			<input id="id_title" maxlength="30" name="title" type="text" value= "{{ leccion.titulo }}" />
+			<label>descripcion </label>
+			<textarea id="id_decripcion" maxlength="150" name="description" type="text" />{{ leccion.descripcion }}</textarea>
+			
+		 </div>
          <div class="col-xs-6 col-sm-4 col-md-4">
             <br/>
-            <button class="btn btn-lg btn-success btn-block" type="submit">Añadir</button>
+            <button class="btn btn-lg btn-success btn-block" type="submit">guardar</button>
          </div>
       </form>
    </div>

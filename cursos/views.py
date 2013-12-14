@@ -67,6 +67,21 @@ def curso_add_leccion(request, course_id):
 			form =  LeccionForm()
 		return render_to_response('curso_lecc.html', {'title':'Cursos', 'formulario': form,'state':state}, context_instance=RequestContext(request))
 
+def curso_edit_leccion(request, leccion_id):
+	leccion=Leccion.objects.get(id=leccion_id)
+	state = " Se dispone a realizar un nuevo registro.Recuerde que todos los campos son obligatorios"
+	if not request.user.is_authenticated():
+		return redirect('/login/?next=%s' % request.path)
+	else:	
+		if request.method == 'POST':
+			leccion.titulo = request.POST.get('title')			
+			leccion.descripcion = request.POST.get('description')
+			leccion.save()
+			return redirect('/curso/edit/'+str(leccion.curso.id))
+
+			
+			
+		return render_to_response('curso_edit_lecc.html', {'title':'Cursos', 'state':state, 'leccion': leccion}, context_instance=RequestContext(request))
 
 def curso_edit(request, course_id):
 	#lista con las lecciones del curso
