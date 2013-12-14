@@ -171,6 +171,19 @@ def review_new(request,task_id):
     else:
         form =  ReviewForm()
     return render_to_response('review_new.html', {'title':'Lecciones', 'formulario': form,'state':state, 'tarea': task}, context_instance=RequestContext(request))
+def curso_del_leccion(request,leccion_id):
+	if not request.user.is_authenticated():
+		return redirect('/login/?next=%s' % request.path)
+	else:
+		Leccion.objects.filter(id = leccion_id).delete()
+		return redirect('/home/')	
+def curso_remove(request, course_id):
+	if not request.user.is_authenticated():
+		return redirect('/login/?next=%s' % request.path)
+	else:
+		Curso.objects.filter(id = course_id).delete()
+		return redirect('/home/')	
+
 
 def my_tasks(request):
 	#lista de tareas del usuario logueado

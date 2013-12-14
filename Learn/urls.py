@@ -30,9 +30,10 @@ urlpatterns = patterns('',
     url(r'^curso/view/(?P<course_id>\d+)/$', 'users.views.view_courses_lessons', name='info_curso'),
     #urls tareas
     url(r'^curso/view/(?P<course_id>\d+)/(?P<lesson_id>\d+)/$','cursos.views.new_task', name='info_curso'),
-
+    url(r'^curso/del_lec/(?P<leccion_id>\d+)/$','cursos.views.curso_del_leccion', name='info_curso'),
     url(r'^mytasks/$','cursos.views.my_tasks', name='revisiones'),   
     url(r'^mytasks/review/(?P<task_id>\d+)/$','cursos.views.task_reviews', name='info_curso'),
+    url(r'^curso/remove/(?P<course_id>\d+)/$','cursos.views.curso_remove', name='info_curso'),
 
     
     url(r'^registro/', 'users.views.register', name='registro'),
