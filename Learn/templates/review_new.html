@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-info">Revisiones</h2>
+<div class="jumbotron">
+	<div class="row">
+			<div class="col-lg-4">
+				<div class="panel panel-default">
+					<div class="panel-body">
+							<p>Titulo: {{tarea.leccion.titulo}}</p>
+							<p>Enunciado: {{tarea.leccion.body}}</p>
+							<p>respuesta del usuario: {{tarea.body}}</p>				
+							
+						</div>
+					</div>
+				<form action="#" method="post" role="form" class="bs-example form-horizontal">{% csrf_token %}
+                    <fieldset>
+                        <legend><a href="http://www.jquery2dotnet.com"><i class="glyphicon glyphicon-book"></i></a> Crea un nuevo curso</legend>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    {{ formulario.body }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    {{ formulario.nota }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <button class="btn btn-default btn-info" type="submit">Enviar correcion</button>
+                                </div>
+                            </div>
+                    </fieldset>
+                </form>
+				</div>
+							
+		
+	</div>
+</div>
+
+{% endblock %}
