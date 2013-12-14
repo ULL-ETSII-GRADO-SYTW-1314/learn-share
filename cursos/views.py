@@ -56,7 +56,9 @@ def curso_add_leccion(request, course_id):
 				description = form.cleaned_data['description']
 				lec = Leccion.objects.create(titulo = title, descripcion = description, curso=course)           
 				lec.save()
-				return redirect('/home'+str(course.id))
+
+				return redirect('/curso/edit/'+str(course.id))
+
 			else:
 					
 				  state=" Error en el registro"
@@ -145,3 +147,13 @@ def review_new(request,task_id):
     else:
         form =  ReviewForm()
     return render_to_response('review_new.html', {'title':'Lecciones', 'formulario': form,'state':state, 'tarea': task}, context_instance=RequestContext(request))
+
+def my_tasks(request):
+	#lista de tareas del usuario logueado
+	tasks = Tarea.objects.filter(usuario=request.user)
+	return render_to_response('my_tasks.html', {'title':'Mis tareas', 'tareas': tasks}, context_instance=RequestContext(request))
+
+def task_reviews(request,task_id):
+    task = Tarea.objects.filter(id=task_id)
+    reviews = Correcion.objects.filter(tarea=task)
+    return render_to_response('review_visor.html', {'title':'Mis tareas','tareas': task, 'revisiones': reviews}, context_instance=RequestContext(request))
