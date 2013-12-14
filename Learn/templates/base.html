@@ -49,7 +49,7 @@
               <div class="navbar-collapse collapse navbar-responsive-collapse">
                 <ul class="nav navbar-nav">
                   {% if user.is_authenticated %}
-                  <li {% if title == "Home" %} class="active" {% endif%}><a href="/home">home</a></li>
+                  <li {% if title == "Home" %} class="active" {% endif%}><a href="/home">Home</a></li>
                   {% if user.is_staff %} <li {% if title == "miscursos" %} class="active" {% endif%}><a href="/mycourses">Mis Cursos</a></li> {% endif %}
                   <li {% if title == "Registro" %} class="active" {% endif%}><a href="/mytasks">Mis tareas</a></li>
     						  <li {% if title == "Registro" %} class="active" {% endif%}><a href="/myreviews">Mis Correcciones</a></li>
@@ -72,7 +72,7 @@
               </div><!-- /.nav-collapse -->
             </div><!-- /.navbar -->
             <div class="jumbotron">
-              <div class="row" align="center">
+              <div class="row" {% if not title == "Informacion personal" %} align="center" {% endif%}><!-- align="center" -->
                 {% block content %}{% endblock %}                              
               </div>
             </div>
