@@ -38,5 +38,6 @@ urlpatterns = patterns('',
     url(r'^ayuda/', 'Learn.views.ayuda', name='ayuda'),
     url(r'^contacto/', 'Learn.views.contacto', name='contacto'),
 
-
+    url(r'^reviews/$', 'cursos.views.task_list', name='revisiones'),
+    url(r'^reviews/(?P<task_id>\d+/$)', 'cursos.views.reviews_new', name='info_curso'),
 )
