@@ -76,13 +76,17 @@ def curso_edit(request, course_id):
 	
 def curso_list(request):
 	#Cursos del usuario que esta logueado
-    Curso_login=Realiza.objects.filter(usuario = request.user)
-    cursos_login=[]
-    for c_login in (Curso_login):
-        cursos_login.append(Curso.objects.get(id=c_login.curso.id))
+	cursos = Curso.objects.all()
+	Curso_login=Realiza.objects.filter(usuario = request.user)
+	cursos_=[]
+	curso_log=[]
+	for cur in (Curso_login):
+		curso_log.append(cur.curso.id)
+	for c in (cursos):
+		if (c.id not in curso_log):
+			cursos_.append(Curso.objects.get(id=c.id))
+	return render_to_response('curso_list.html', {'title':'Cursos', 'cursos':cursos_}, context_instance=RequestContext(request) )
 
-	cursos_ = Curso.objects.all()
-	return render_to_response('curso_list.html', {'title':'Cursos', 'cursos':cursos_, 'cursos_login': cursos_login}, context_instance=RequestContext(request) )
 		
 def inscribe(request, course_id):
 	course = Curso.objects.get(id=course_id)		

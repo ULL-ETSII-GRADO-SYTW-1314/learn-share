@@ -12,4 +12,7 @@ class LeccionForm(forms.Form):
 	description = forms.CharField(widget=forms.Textarea)
 class TaskForm(forms.Form):
 	body = forms.CharField(widget=forms.Textarea)
-		
+class ReviewForm(forms.Form):
+	body = forms.CharField(widget=forms.Textarea)
+	nota = forms.ChoiceField(choices=[(x,x) for x in range(0, 10)], required=True)
+
