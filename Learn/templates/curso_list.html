@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 <h2 class="text-info">Cursos</h2>
-{% if user.is_staff %} 
- <a href="/curso/new/"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Nuevo curso"/></a><br/><br/>
+{% if user.is_staff %}
+<div align="right"> 
+   <a href="/curso/new/"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Nuevo curso"/></a><br/><br/>
+</div>
 {% endif %} 
 <div class="jumbotron">
 	<div class="row">
