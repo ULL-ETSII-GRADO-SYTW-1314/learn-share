@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-info">Nueva Lección</h2><br/>
+<div class="jumbotron">
+   <div class="row">
+      <form action="#" method="post" class="form-horizontal" role="form">{% csrf_token %}
+         <div align="left">
+            Título
+            {{leccion.title }}
+            <br/><br>Descripción
+            {{leccion.description }}
+            <br/>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4">
+            <br/>
+            <button class="btn btn-lg btn-success btn-block" type="submit">Añadir</button>
+         </div>
+      </form>
+   </div>
+</div>
+	
+	
+{% endblock %}
