@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-info">Nueva Lección</h2><br/>
+<div class="jumbotron">
+   <div class="row">
+      <form action="#" method="post" class="form-horizontal" role="form">{% csrf_token %}
+         <div align="left">
+            Título
+            {{ leccion.title }}
+            <br/><br>Descripción
+            {{ leccion.description }}
+            <br/>
+         </div>
+         <div class="col-xs-6 col-sm-4 col-md-4">
+            <br/> 
+            <input class="btn btn-lg btn-danger btn-block" type="submit" name="Guardar" value="Guardar"/>
+<a href="/curso/edit"><input class="btn btn-lg btn-success btn-success" type="button" name="buttonseguir" value="Cancelar"/></a>
+         </div>
+      </form>
+   </div>
+</div>
+	
+	
+{% endblock %}
