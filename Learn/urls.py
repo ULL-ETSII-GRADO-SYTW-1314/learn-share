@@ -16,7 +16,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     
     url(r'^login/$', 'users.views.login_user', name='Login'),
-    url(r'^home/$', 'users.views.home', name='home'),   
+    url(r'^home/$', 'users.views.home', name='home'),
+    url(r'^profile/$', 'users.views.update'),
     url(r'^logout/$', 'users.views.logout_user', name='Logout'),
     url(r'^perfil/(?P<user_id>\d+)/$', 'users.views.perfil'),
     #urls de cursos

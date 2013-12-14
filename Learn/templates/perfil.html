@@ -10,7 +10,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="container-fluid well span6">
-                        <div class="row-fluid">
+                        <div class="row-fluid" align="left">
                             <div class="span2" >
                                 {% load gravatar %}
                                 <img src="{% gravatar_url user.email 150 %}" class="img-circle imagen_perfil">
@@ -29,7 +29,7 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">Amigos</h3>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body" align="left">
                 {% for users in follower %}
                     <a href="/perfil/{{ users.user.id }}/"><img src="{% gravatar_url users.user.email %}" class="img-circle imagen_sm"> {{users.alias}}</a>
                     </br>

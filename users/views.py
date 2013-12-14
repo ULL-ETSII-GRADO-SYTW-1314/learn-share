@@ -159,3 +159,42 @@ def perfil(request, user_id):
 
                 
             return render_to_response('perfil.html', {'title':'Perfil', 'user': usuario, 'User': usuario_, 'follower':followers, 'cursos': cursos, 'cursos_login': cursos_login})
+
+def update(request):
+        error='Recuerde, las password deben ser iguales.'
+        usuario = request.user
+        extendido = ExtendUser.objects.get(user=usuario)
+        alias = extendido.alias[1:len(extendido.alias)]
+        if request.method=='POST':
+                usuario.username=request.POST.get('username')
+
+                if request.POST.get('password'):
+
+                        if request.POST.get('password') == request.POST.get('rpassword'):
+                                usuario.set_password(request.POST.get('password'))
+                                error = "El password ha sido actualizado correctamente."
+                        else:
+                                error = "Los password no coinciden."
+                try:
+                        if validate_email(request.POST.get('email')):
+                                usuario.email=request.POST.get('email')
+                except:
+
+                        if error == 'Recuerde que los password deben coincidir.':
+
+                                error = "El e-mail es incorrecto."
+                        else:
+                                error = error + " El e-mail es incorrecto."
+
+                usuario.save()
+                if extendido.alias!=request.POST.get('alias'):
+                        extendido.alias='@'+request.POST.get('alias')
+
+                if request.POST.get('photo'):
+                        extendido.photo=request.POST.get('photo')
+                if "borrar" in request.POST.keys():
+                        extendido.photo='/static/img/default/defaultProfile.png'
+
+                extendido.save()
+
+        return render_to_response('profile.html', {'title':'Informacion personal', 'User': usuario, 'Extend':extendido, 'MERROR':error, 'Alias':alias}, context_instance=RequestContext(request))

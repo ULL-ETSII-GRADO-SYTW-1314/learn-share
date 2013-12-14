@@ -26,7 +26,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="container-fluid well span6">
-                        <div class="row-fluid">
+                        <div class="row-fluid" align="left">
                             <div class="span2" >
                                 {% load gravatar %}
                                 <img src="{% gravatar_url user.email 150%}" class="img-circle imagen_perfil">
@@ -40,7 +40,7 @@
 
                             <div class="span2">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-primary btn-sm btn-info"><span class="btn-label"></span>Editar Perfil</button>
+                                    <a href="/profile"><input class="btn btn-primary btn-sm btn-info" type="button" name="buttoneditar" value="Editar Perfil"/></a>
                                 </div>
                             </div>
                         </div>
