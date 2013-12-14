@@ -198,3 +198,14 @@ def update(request):
                 extendido.save()
 
         return render_to_response('profile.html', {'title':'Informacion personal', 'User': usuario, 'Extend':extendido, 'MERROR':error, 'Alias':alias}, context_instance=RequestContext(request))
+
+def deluser(request):
+        if not request.user.is_authenticated():
+                return redirect('/login/?next=%s' % request.path)
+        else:
+                E=ExtendUser.objects.get(user = request.user)
+                E.delete()
+                U=request.user
+                logout(request)
+                U.delete()
+                return redirect('/login/?next=%s' % request.path)
