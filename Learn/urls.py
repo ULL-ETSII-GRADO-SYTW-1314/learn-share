@@ -36,5 +36,6 @@ urlpatterns = patterns('',
     url(r'^unfollow/(?P<user_id>\d+)/$', 'users.views.unfollow'),
     url(r'^ayuda/', 'Learn.views.ayuda', name='ayuda'),
 
-
+    url(r'^reviews/$', 'cursos.views.task_list', name='revisiones'),
+    url(r'^reviews/(?P<task_id>\d+/$)', 'cursos.views.reviews_new', name='info_curso'),
 )

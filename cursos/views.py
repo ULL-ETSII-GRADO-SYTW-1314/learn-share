@@ -104,3 +104,34 @@ def new_task(request,course_id,lesson_id):
 		form =  TaskForm()
 	return render_to_response('new_task.html', {'title':'Registro', 'formulario': form,'state':state, 'leccion': lec}, context_instance=RequestContext(request))
 
+def task_list(request):
+    tasks = Tarea.objects.exclude(usuario=request.user)
+    revisadas = Correcion.objects.filter(usuario=request.user)
+    tasks_=[]
+    rev_=[]
+    for r in revisadas:
+        rev_.append(r.tarea)   
+    for t in tasks:
+        if t not in rev_:
+            tasks_.append(t)   
+    return render_to_response('task_list.html', {'title':'Revisiones', 'revisiones':tasks_}, context_instance=RequestContext(request) )
+##Vista de lista de revisiones
+def review_new(request,task_id):
+    state = " Se dispone a realizar un nuevo registro.Recuerde que todos los campos son obligatorios"
+    task = Tarea.objects.get(id=task_id)
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            tarea = Tarea.objects.get(id=task_id)
+            body = form.cleaned_data['body']
+            punt = form.cleaned_data['nota']
+            review = Correcion.objects.create(body=body, tarea=task,usuario=request.user, nota=punt )          
+            review.save()
+            return redirect('/reviews')
+        else:
+               
+              state=" Error en el registro"
+              return render_to_response('review_new.html', {'title':'Lecciones', 'formulario': form,'state':state, 'tarea': task}, context_instance=RequestContext(request))
+    else:
+        form =  ReviewForm()
+    return render_to_response('review_new.html', {'title':'Lecciones', 'formulario': form,'state':state, 'tarea': task}, context_instance=RequestContext(request))
