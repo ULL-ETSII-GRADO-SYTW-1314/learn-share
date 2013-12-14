@@ -1,23 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
-<h2 class="text-info">Nueva Lección</h2><br/>
-<div class="jumbotron">
-   <div class="row">
-      <form action="#" method="post" class="form-horizontal" role="form">{% csrf_token %}
-         <div align="left">
-         	<label>titulo </label>
-			<input id="id_title" maxlength="30" name="title" type="text" value= "{{ leccion.titulo }}" />
-			<label>descripcion </label>
-			<textarea id="id_decripcion" maxlength="150" name="description" type="text" />{{ leccion.descripcion }}</textarea>
-			
-		 </div>
-         <div class="col-xs-6 col-sm-4 col-md-4">
+   <h2 class="text-info">Nueva Lección</h2><br/>
+      <div class="jumbotron">
+         <div class="row">
+            <form action="#" method="post" class="form-horizontal" role="form">{% csrf_token %}
+               <div align="left">
+                  Título
+                  <input id="id_title" maxlength="30" name="title" type="text" value= "{{ leccion.titulo }}" /><br/><br/>
+                  Descripción
+                  <textarea id="id_decripcion" maxlength="450" name="description" type="text" />{{ leccion.descripcion }}</textarea>
+
+               </div>
+            <div class="col-xs-6 col-sm-4 col-md-4">
             <br/>
-            <button class="btn btn-lg btn-success btn-block" type="submit">guardar</button>
+               <button class="btn btn-mini btn-primary btn-success" type="submit">Guardar</button>
+               <a href="/curso/edit/{{leccion.id}}"><input class="btn btn-mini btn-primary btn-danger" type="button" name="buttoncancelar" value="Cancelar"/></a>
+            </div>
+            </form>
          </div>
-      </form>
+      </div>
    </div>
-</div>
 	
 	
 {% endblock %}
