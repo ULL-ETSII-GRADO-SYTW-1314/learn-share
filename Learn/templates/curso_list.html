@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 <h2 class="text-info">Cursos</h2>
-{% if user.is_staff %} 
- <a href="/curso/new/"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Nuevo curso"/></a><br/><br/>
+{% if user.is_staff %}
+<div align="right"> 
+   <a href="/curso/new/"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Nuevo curso"/></a><br/><br/>
+</div>
 {% endif %} 
 <div class="jumbotron">
 	<div class="row">
@@ -14,8 +16,8 @@
 							<p>Titulo: {{curso.titulo}}</p>
 							<p>Lenguaje: {{curso.lenguaje}}</p>
 							{% if user.is_staff %}  {%if user == curso.creator%} 
-							<a href="/curso/edit/{{curso.id}}"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="editar"/></a><br/><br/>
-							<a href="/curso/remove/{{curso.id}}"><input class="btn btn-mini btn-primary btn-success" type="button" name="button" value="borrar"/></a><br/><br/>
+							<a href="/curso/edit/{{curso.id}}"><input class="btn btn-primary btn-sm btn-success" type="button" name="buttonseguir" value="editar"/></a>
+							<a href="/curso/remove/{{curso.id}}"><input class="btn btn-primary btn-sm btn-danger" type="button" name="button" value="borrar"/></a><br/>
 
 							{% endif %} {% endif %}
 							<a href="/curso/inscribe/{{ curso.id }}/"><input class="btn btn-primary btn-sm btn-success" type="button" name="buttonseguir" value="Inscripcion"/></a>
