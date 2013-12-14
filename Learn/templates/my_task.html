@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-info">Revisiones</h2>
+<div class="jumbotron">
+	<div class="row">
+		{% for task in tareas %}
+			<div class="col-lg-4">
+				<div class="panel panel-default">
+					<div class="panel-body">
+							<p>Titulo: {{task.leccion.titulo}}</p>
+							<a href="/mytaks/review/{{ task.id }}/"><input class="btn btn-primary btn-sm btn-success" type="button" name="buttonseguir" value="Correcciones"/></a>
+							
+						</div>
+					</div>
+				</div>
+							
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock %}

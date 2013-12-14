@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-info">Revisiones</h2>
+<div class="jumbotron">
+	<div class="row">
+		{% for tarea in tareas %}
+		<div class="panel panel-default">
+					<div class="panel-body">						
+							<p>Titulo: {{tarea.leccion.titulo}}</p>
+							<p>Enunciado: {{tarea.leccion.descripcion}}</p>
+							<p>respuesta del usuario: {{tarea.body}}</p>				
+							
+						</div>
+					</div>
+		
+		{% endfor %}
+		{% for review in revisiones %}
+			<div class="col-lg-4">
+				<div class="panel panel-default">
+					<div class="panel-body">
+							<p>Titulo: {{review.body}}</p>
+							<p>Titulo: {{review.usuario}}</p>
+							<p>Titulo: {{review.nota}}</p>
+						</div>
+					</div>
+				</div>
+							
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock %}
