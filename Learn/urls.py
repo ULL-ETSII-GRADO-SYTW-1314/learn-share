@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     url(r'^login/$', 'users.views.login_user', name='Login'),
     url(r'^home/$', 'users.views.home', name='home'),
     url(r'^profile/$', 'users.views.update'),
-
+    url(r'^contacto/$','users.views.contacto'),
     url(r'^deluser/$', 'users.views.deluser'),
     url(r'^logout/$', 'users.views.logout_user', name='Logout'),
     url(r'^perfil/(?P<user_id>\d+)/$', 'users.views.perfil'),

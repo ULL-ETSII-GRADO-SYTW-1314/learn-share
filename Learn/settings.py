@@ -141,6 +141,12 @@ GRAVATAR_DEFAULT_URL = "https://secure.gravatar.com/avatar/de9b11d0f9c0569ba9173
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'learnyshare@gmail.com'
+EMAIL_HOST_PASSWORD = 'casianocoromoto'
+EMAIL_PORT = 587
+
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
