@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+   <h2 class="text-info">Nueva Lección</h2><br/>
+      <div class="jumbotron">
+         <div class="row">
+            <form action="#" method="post" class="form-horizontal" role="form">{% csrf_token %}
+               <div align="left">
+                  Descripción
+                  <textarea id="id_decripcion" maxlength="450" name="body" type="text" />{{ revision.body }}</textarea>
+				  nota:  <select id="id_nota" name="nota">
+<option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+</select>
+               </div>
+            <div class="col-xs-6 col-sm-4 col-md-4">
+            <br/>
+               <button class="btn btn-mini btn-primary btn-success" type="submit">Guardar</button>
+               <a href="/curso/edit/{{leccion.id}}"><input class="btn btn-mini btn-primary btn-danger" type="button" name="buttoncancelar" value="Cancelar"/></a>
+            </div>
+            </form>
+         </div>
+      </div>
+   </div>
+	
+	
+{% endblock %}
