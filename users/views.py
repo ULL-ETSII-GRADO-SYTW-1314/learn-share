@@ -13,6 +13,15 @@ from forms import RegistrationForm
 from django.contrib.auth import authenticate, login
 from django.core.validators import *
 
+from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
+from django.core.mail import EmailMessage
+
+from users.forms import ContactoForm
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render_to_response, get_object_or_404
+
+
 
 
 #Registramos el usuario
@@ -210,3 +219,29 @@ def deluser(request):
                 logout(request)
                 U.delete()
                 return redirect('/login/?next=%s' % request.path)
+
+def contacto(request):
+    if request.method=='POST':
+        formulario = ContactoForm(request.POST)        
+
+        #subject = 'Mensaje de contacto Learn&Share'
+        #message = formulario.cleaned_data['mensaje'] + "\n"
+        #message += 'Responder a: ' + formulario.cleaned_data['correo']
+
+        subject = 'Mensaje de contacto Learn&Share'
+        message = request.POST.get('mensaje', '') + "\n"
+        message += 'Responder a: ' + request.POST.get('correo', '')
+
+
+        if subject and message:
+            try:
+                send_mail(subject,message,'learnyshare@gmail.com',['learnyshare@gmail.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found')
+            return redirect('/home/')
+            
+        else:
+            return HttpResponse('Invalid header found')
+    else:
+        formulario =  ContactoForm()
+    return render_to_response('contactoform.html', {'title':'Informacion personal', 'formulario': formulario}, context_instance=RequestContext(request))

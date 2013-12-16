@@ -39,3 +39,8 @@ class RegistrationForm(forms.Form):
         else:
             return self.cleaned_data['email']
 
+
+class ContactoForm(forms.Form):
+    required_css_class = 'required'
+    correo = forms.EmailField(widget=forms.EmailInput(attrs={'name': 'correo','id': 'correo','placeholder': 'Correo', 'class':"form-control"}))
+    mensaje = forms.CharField(widget=forms.Textarea(attrs={'name': 'mensaje','id': 'mensaje','placeholder': 'Escriba aquí su mensaje...', 'class':"form-control"}))
