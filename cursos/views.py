@@ -87,7 +87,7 @@ def curso_edit(request, course_id):
 	#lista con las lecciones del curso
 	course = Curso.objects.get(id=course_id)
 	lecciones=Leccion.objects.filter(curso = course)
-	return render_to_response('curso_edit.html', {'title':'Cursos', 'curso':course,'lecciones': lecciones}, context_instance=RequestContext(request) )
+	return render_to_response('curso_edit.html', {'title':'Edicion de Cursos', 'curso':course,'lecciones': lecciones}, context_instance=RequestContext(request) )
 
 def curso_remove(request, course_id):
 	if not request.user.is_authenticated():
@@ -97,7 +97,7 @@ def curso_remove(request, course_id):
 		return redirect('/home/')	
 def my_courses(request):
 	cursos = Curso.objects.filter(creator=request.user)
-	return render_to_response('curso_list.html', {'title':'Cursos', 'cursos':cursos}, context_instance=RequestContext(request) )
+	return render_to_response('curso_list.html', {'title':'Mis Cursos', 'cursos':cursos}, context_instance=RequestContext(request) )
 	
 		
 def curso_list(request):
@@ -177,6 +177,8 @@ def curso_del_leccion(request,leccion_id):
 	else:
 		Leccion.objects.filter(id = leccion_id).delete()
 		return redirect('/home/')	
+		
+		
 def curso_remove(request, course_id):
 	if not request.user.is_authenticated():
 		return redirect('/login/?next=%s' % request.path)
@@ -195,4 +197,23 @@ def task_reviews(request,task_id):
     reviews = Correcion.objects.filter(tarea=task)
     return render_to_response('review_visor.html', {'title':'Mis tareas','tareas': task, 'revisiones': reviews}, context_instance=RequestContext(request))
 
+def reviews_list(request):
+	revisadas = Correcion.objects.filter(usuario=request.user)
+	return render_to_response('review_list.html', {'title':'Revisiones', 'revisiones':revisadas}, context_instance=RequestContext(request) )
+def reviews_edit(request, leccion_id):
+	correc=Correcion.objects.get(id=leccion_id)
+	state = " Se dispone a realizar un nuevo registro.Recuerde que todos los campos son obligatorios"
+	if not request.user.is_authenticated():
+		return redirect('/login/?next=%s' % request.path)
+	else:	
+		if request.method == 'POST':
+			correc.body = request.POST.get('body')			
+			correc.nota = request.POST.get('nota')
+			correc.save()
+			return redirect('/myreviews/')
 
+			
+			
+		return render_to_response('review_edit.html', {'title':'Cursos', 'state':state, 'revision': correc}, context_instance=RequestContext(request))
+
+	

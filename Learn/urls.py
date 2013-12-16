@@ -31,6 +31,8 @@ urlpatterns = patterns('',
     url(r'^curso/edit_lec/(?P<leccion_id>\d+)/$','cursos.views.curso_edit_leccion', name='info_curso'),
     url(r'^curso/edit/(?P<course_id>\d+)/$','cursos.views.curso_edit', name='info_curso'),
     url(r'^curso/view/(?P<course_id>\d+)/$', 'users.views.view_courses_lessons', name='info_curso'),
+    url(r'^myreviews/$', 'cursos.views.reviews_list', name='info_curso'),
+    url(r'^myreviews/(?P<leccion_id>\d+)/$', 'cursos.views.reviews_edit', name='info_curso'),
     #urls tareas
     url(r'^curso/view/(?P<course_id>\d+)/(?P<lesson_id>\d+)/$','cursos.views.new_task', name='info_curso'),
     url(r'^curso/del_lec/(?P<leccion_id>\d+)/$','cursos.views.curso_del_leccion', name='info_curso'),
