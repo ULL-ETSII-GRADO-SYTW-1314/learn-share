@@ -16,3 +16,6 @@ def ayuda(request):
 
 def contacto(request):
    return render_to_response('contacto.html', {'title':'Contacto', 'user': request.user},context_instance=RequestContext(request) )
+
+def about(request):
+   return render_to_response('about.html', {'title':'Acerca de', 'user': request.user},context_instance=RequestContext(request) )
