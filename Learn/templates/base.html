@@ -7,26 +7,7 @@
     <meta charset="utf-8">        
     <link href="/static/css/bootstrap.css", rel="stylesheet", type="text/css">
     <link href="/static/css/bootstrap.min.css", rel="stylesheet", type="text/css">
-    <link href="/static/css/estilo_propio.css", rel="stylesheet", type="text/css">       
-    <!---
-    <script type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>  
-    <script type="text/javascript">
-     
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-23019901-1']);
-      _gaq.push(['_setDomainName', "bootswatch.com"]);
-        _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-    <script src="bsa.js"></script>  
-    <script src="bootstrap.js"></script>  
-    <script src="bootstrap.min.js"></script> -->
+    <link href="/static/css/estilo_propio.css", rel="stylesheet", type="text/css">
   </head>
   <body>
     
@@ -50,13 +31,13 @@
                 <ul class="nav navbar-nav">
                   {% if user.is_authenticated %}
                   <li {% if title == "Home" %} class="active" {% endif%}><a href="/home">Home</a></li>
-                  {% if user.is_staff %} <li {% if title == "miscursos" %} class="active" {% endif%}><a href="/mycourses">Mis Cursos</a></li> {% endif %}
-                  <li {% if title == "Registro" %} class="active" {% endif%}><a href="/mytasks">Mis tareas</a></li>
-    						  <li {% if title == "Registro" %} class="active" {% endif%}><a href="/myreviews">Mis Correcciones</a></li>
-                  <li {% if title == "Ayuda" %} class="active" {% endif%}><a href="/reviews">Ayuda a otros</a></li>
+                  {% if user.is_staff %} <li {% if title == "Mis Cursos" %} class="active" {% endif%}><a href="/mycourses">Mis Cursos</a></li> {% endif %}
+                  <li {% if title == "Mis tareas" %} class="active" {% endif%}><a href="/mytasks">Mis tareas</a></li>
+    						  <li {% if title == "Mis Correcciones" %} class="active" {% endif%}><a href="/myreviews">Mis Correcciones</a></li>
+                  <li {% if title == "Revisiones" %} class="active" {% endif%}><a href="/reviews">Ayuda a otros</a></li>
                   <li {% if title == "Cursos" %} class="active" {% endif%}><a href="/curso/list">Cursos</a></li>
-                  <li {% if title == "Registro" %} class="active" {% endif%}><a href="#">Foro</a></li>
-                  <li {% if title == "Registro" %} class="active" {% endif%}><a href="#">Mensajes</a></li>
+                  <li {% if title == "Foro" %} class="active" {% endif%}><a href="#">Foro</a></li>
+                  <li {% if title == "Mensaje" %} class="active" {% endif%}><a href="#">Mensajes</a></li>
                   {% endif%}
                   {% if not user.is_authenticated %}
                   <li class="divider-vertical"></li>

@@ -199,7 +199,7 @@ def task_reviews(request,task_id):
 
 def reviews_list(request):
 	revisadas = Correcion.objects.filter(usuario=request.user)
-	return render_to_response('review_list.html', {'title':'Revisiones', 'revisiones':revisadas}, context_instance=RequestContext(request) )
+	return render_to_response('review_list.html', {'title':'Mis Correcciones', 'revisiones':revisadas}, context_instance=RequestContext(request) )
 def reviews_edit(request, leccion_id):
 	correc=Correcion.objects.get(id=leccion_id)
 	state = " Se dispone a realizar un nuevo registro.Recuerde que todos los campos son obligatorios"

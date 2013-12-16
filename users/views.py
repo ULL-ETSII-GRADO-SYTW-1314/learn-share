@@ -222,16 +222,10 @@ def deluser(request):
 
 def contacto(request):
     if request.method=='POST':
-        formulario = ContactoForm(request.POST)        
-
-        #subject = 'Mensaje de contacto Learn&Share'
-        #message = formulario.cleaned_data['mensaje'] + "\n"
-        #message += 'Responder a: ' + formulario.cleaned_data['correo']
-
+        formulario = ContactoForm(request.POST)
         subject = 'Mensaje de contacto Learn&Share'
         message = request.POST.get('mensaje', '') + "\n"
         message += 'Responder a: ' + request.POST.get('correo', '')
-
 
         if subject and message:
             try:
