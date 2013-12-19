@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-   <h2 class="text-info">{{curso.titulo}}</h2>
+   <h2 class="text-info">Titulo del curso: {{curso.titulo}}</h2>
    <div align="right">
       <a href="/curso/add_lec/{{ curso.id }}/"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Nueva leccion"/></a><br/><br/>
    </div>
@@ -9,9 +9,9 @@
       <div class="col-lg-4">
          <div class="panel panel-default">
             <div class="panel-body">
-               <p>{{leccion.titulo}}</p>
-               <a href="/curso/edit_lec/{{leccion.id}}"><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Editar"/></a>
-               <a href="/curso/del_lec/{{leccion.id}}"><input class="btn btn-mini btn-danger btn-success" type="button" name="buttonseguir" value="Borrar"/></a>	
+               <p>Lección: {{leccion.titulo}}</p>
+               <a href="/curso/edit_lec/{{leccion.id}}"><input class="btn btn-primary btn-sm btn-success" type="button" name="buttonseguir" value="Editar"/></a>
+               <a href="/curso/del_lec/{{leccion.id}}"><input class="btn btn-primary btn-sm btn-danger" type="button" name="buttonseguir" value="Borrar"/></a>	
             </div>
          </div>
       </div>
