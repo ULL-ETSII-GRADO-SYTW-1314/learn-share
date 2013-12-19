@@ -15,12 +15,16 @@
 						<div class="panel-body">
 							<p>Titulo: {{curso.titulo}}</p>
 							<p>Lenguaje: {{curso.lenguaje}}</p>
-							{% if user.is_staff %}  {%if user == curso.creator%} 
-							<a href="/curso/edit/{{curso.id}}"><input class="btn btn-primary btn-sm btn-success" type="button" name="buttonseguir" value="editar"/></a>
-							<a href="/curso/remove/{{curso.id}}"><input class="btn btn-primary btn-sm btn-danger" type="button" name="button" value="borrar"/></a><br/>
+							{% if user.is_staff %}
+								{%if user == curso.creator%} 
+									<a href="/curso/edit/{{curso.id}}"><input class="btn btn-primary btn-sm btn-success" type="button" name="buttonseguir" value="+Lecciones"/></a>
+									<a href="/curso/remove/{{curso.id}}"><input class="btn btn-primary btn-sm btn-danger" type="button" name="button" value="Borrar"/></a>
+								{% endif %}
+							{% endif %}
 
-							{% endif %} {% endif %}
-							<a href="/curso/inscribe/{{ curso.id }}/"><input class="btn btn-primary btn-sm btn-success" type="button" name="buttonseguir" value="Inscripcion"/></a>
+							{%if user != curso.creator%} 
+								<a href="/curso/inscribe/{{ curso.id }}/"><input class="btn btn-primary btn-sm btn-success" type="button" name="buttonseguir" value="Inscripcion"/></a>
+							{% endif %}
 							<a href="/curso/{{ curso.id }}/"><input class="btn btn-primary btn-sm btn-info" type="button" name="buttonseguir" value="+Info"/></a>
 						
 						</div>
