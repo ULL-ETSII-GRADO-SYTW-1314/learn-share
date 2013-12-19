@@ -150,7 +150,7 @@ def task_list(request):
     for t in tasks:
         if t not in rev_:
             tasks_.append(t)   
-    return render_to_response('task_list.html', {'title':'Revisiones', 'revisiones':tasks_}, context_instance=RequestContext(request) )
+    return render_to_response('task_list.html', {'title':'Ayudaaotros', 'revisiones':tasks_}, context_instance=RequestContext(request) )
 ##Vista de lista de revisiones
 def review_new(request,task_id):
     state = " Se dispone a realizar un nuevo registro.Recuerde que todos los campos son obligatorios"

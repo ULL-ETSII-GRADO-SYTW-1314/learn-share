@@ -8,8 +8,8 @@ class CourseForm(forms.Form):
 	prize = forms.IntegerField(widget=forms.TextInput(attrs={'placeholder': 'Puntos necesarios', 'class':"form-control"}),min_value=0, max_value=9999)
 	
 class LeccionForm(forms.Form):
-	title = forms.RegexField(regex=r'^[\w.@+-]+$',max_length=155)
-	description = forms.CharField(widget=forms.Textarea)
+	title = forms.RegexField(widget=forms.TextInput(attrs={'placeholder': 'Titulo del Curso', 'class':"form-control"}),regex=r'^[\w.@+-]+$',max_length=155)
+	description = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Descripcion', 'class':"form-control"}))
 class TaskForm(forms.Form):
 	body = forms.CharField(widget=forms.Textarea)
 class ReviewForm(forms.Form):

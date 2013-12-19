@@ -32,9 +32,9 @@
                   {% if user.is_authenticated %}
                   <li {% if title == "Home" %} class="active" {% endif%}><a href="/home">Home</a></li>
                   {% if user.is_staff %} <li {% if title == "Mis Cursos" %} class="active" {% endif%}><a href="/mycourses">Mis Cursos</a></li> {% endif %}
-                  <li {% if title == "Mis tareas" or "Edicion de Cursos" %} class="active" {% endif%}><a href="/mytasks">Mis tareas</a></li>
+                  <li {% if title == "Mis tareas" %} class="active" {% endif%}><a href="/mytasks">Mis tareas</a></li>
     						  <li {% if title == "Mis Correcciones" %} class="active" {% endif%}><a href="/myreviews">Mis Correcciones</a></li>
-                  <li {% if title == "Revisiones" %} class="active" {% endif%}><a href="/reviews">Ayuda a otros</a></li>
+                  <li {% if title == "Ayudaaotros" %} class="active" {% endif%}><a href="/reviews">Ayuda a otros</a></li>
                   <li {% if title == "Cursos" %} class="active" {% endif%}><a href="/curso/list">Cursos</a></li>
                   <li {% if title == "Foro" %} class="active" {% endif%}><a href="#">Foro</a></li>
                   <li {% if title == "Mensaje" %} class="active" {% endif%}><a href="#">Mensajes</a></li>

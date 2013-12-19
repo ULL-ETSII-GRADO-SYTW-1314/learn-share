@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-   <h2 class="text-info">{{Curso.titulo}}</h2><br/>
+   <h2 class="text-info">Curso: {{Curso.titulo}}</h2><br/>
    <div class="jumbotron">
       <div class="row">
          <h4>Lecciones</h4>
@@ -8,7 +8,7 @@
             <div class="col-lg-12">
                <div class="panel panel-default">
                   <div class="panel-body">
-                     <p> {{ leccion.titulo}}<br/><br/>
+                     <p> Lección: {{ leccion.titulo}}<br/><br/>
                      <a href="./{{leccion.id}}"><input class="btn btn-mini btn-info btn-success" type="button" name="buttonseguir" value="Realizar"/></a>
                      <a href=""><input class="btn btn-mini btn-primary btn-success" type="button" name="buttonseguir" value="Corrección"/></a></p>
                   </div>

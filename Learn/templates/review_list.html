@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h2 class="text-info">Revisiones</h2>
+<h2 class="text-info">Mis correcciones</h2>
 <div class="jumbotron">
 	<div class="row">
 		{% for revision in revisiones %}
@@ -9,7 +9,7 @@
 					<div class="panel-body">
 							<p>Titulo: {{revision.tarea.leccion.titulo}}</p>
 														<p>Nota: {{revision.nota}}</p>
-							<a href="/myreviews/{{ revision.id }}/"><input class="btn btn-primary btn-sm btn-success" type="button" name="buttonseguir" value="corregir"/></a>
+							<a href="/myreviews/{{ revision.id }}/"><input class="btn btn-primary btn-sm btn-success" type="button" name="buttonseguir" value="Modificar"/></a>
 							
 						</div>
 					</div>

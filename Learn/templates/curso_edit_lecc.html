@@ -9,12 +9,12 @@
                   <legend><a href="http://www.jquery2dotnet.com"><i class="glyphicon glyphicon-globe"></i></a> Editar Lección</legend>
                   <div align="left" class="form-group">
                      <div class="col-lg-12">
-                        <label>Título: </label><input id="id_title" maxlength="30" name="title" type="text" value= "{{ leccion.titulo }}" />
+                        <label>Título: </label><input placeholder='Titulo del Curso' class="form-control" id="id_title" maxlength="30" name="title" type="text" value= "{{ leccion.titulo }}" />
                      </div>
                   </div>
                   <div align="left" class="form-group">
                      <div class="col-lg-12">
-                        <label>Descripción: </label><textarea id="id_decripcion" maxlength="450" name="description" type="text" />{{ leccion.descripcion }}</textarea>
+                        <label>Descripción: </label><textarea placeholder='Descripción' class="form-control" id="id_decripcion" maxlength="450" name="description" type="text" />{{ leccion.descripcion }}</textarea>
                      </div>
                   </div>
                   <div class="form-group">
